@@ -96,7 +96,7 @@ void Card::Print() {
     else {
         cout << cardNumber << " of " << suit << endl;
     }
-    cout << "\n" << endl;
+    
     //}
     //else {
     //  cout << "Card is facing down. We don't know what it is yet." << endl;
