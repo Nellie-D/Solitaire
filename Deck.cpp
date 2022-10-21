@@ -103,11 +103,12 @@ void Deck::shuffle() {
     for (int i = 51; i > -1; i--) {
 
         //cout << indexVector[i] << " :Index array" << endl;
-        
+        srand((unsigned)time(NULL));
         int localIndex = rand() % indexVector.size();
+
         int value = indexVector[localIndex];
         
-        //cout << localIndex << " :local index" << endl;
+        cout << localIndex << " :local index" << endl;
         //cout << value << " :value" << endl;
 
 
@@ -115,14 +116,14 @@ void Deck::shuffle() {
         
         DeckVector.erase(DeckVector.begin() + i);
         indexVector.erase(indexVector.begin() + localIndex);
-        //cout << DeckVector.size() << endl;
+        cout << DeckVector.size() << endl;
 
         //cout << "IndexVector size: " << indexVector.size() << endl;
        
         
     }
 
-    for (int j = 0; j < localDeckVector.size(); j++) {
+    for (int j = 51; j > -1; j--) {
         if (localDeckVector[j] == NULL) {
            // cout << "null" << endl;
             localDeckVector.erase(localDeckVector.begin() + j);
@@ -138,7 +139,7 @@ void Deck::shuffle() {
     cout << DeckVector.size() << endl;
     //DeckVector.swap(localDeckVector);
    // cout << DeckVector.size() << endl;
-    for (int f = 1; f < DeckVector.size(); f++) {
+    for (int f = 0; f < DeckVector.size(); f++) {
         DeckVector[f]->Print();
     }
 
