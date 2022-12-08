@@ -13,8 +13,12 @@ public:
     Deck(bool cardFront, int cardValue, CardSuit suitType);
     void createDeck();
     ~Deck();
+    void setCurrCard(int i);
+    Card* getCurrCard(int i);
     void shuffle();
-    void flip();
+    void flipAll();
+    void flip(Card*);
+    void sort();
     void print();
 
 
@@ -27,6 +31,7 @@ private:
     Card* DeckList[52];
     vector <Card*> localDeckVector;
     vector<int> indexVector;
+    vector <Card*> newDeckVector;
 };
 
 #endif

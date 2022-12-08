@@ -1,27 +1,15 @@
 #include <iostream>
 #include <string>
-#include "Deck.h"
+#include "Board.h"
 using namespace std;
 
 int main() {
 
-    Deck myDeck;
-   
-    myDeck.createDeck();
-   
-    //myDeck.print();
-    int shuffleAmount;
-    cout << "SHUFFLING THE DECK" << endl;
-    cout << "How many times should we shuffle the deck?" << endl;
-    cin >> shuffleAmount;
+
+
+    Board myBoard;
     
-    for (int i = 0; i < shuffleAmount; i++) {
-        myDeck.shuffle();
-    }
-    
-    
-   
-    //myDeck.print();
+    myBoard.layoutGameAlg();
 
 
     return 0;

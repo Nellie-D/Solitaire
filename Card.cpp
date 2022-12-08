@@ -25,6 +25,7 @@ Card::Card(bool cardFront, int cardInt, CardSuit suitType) {
 
 void Card::SetSide(bool cardFront) {
     cardFace = cardFront;
+   
 }
 
 void Card::SetNumber(int cardInt) {
@@ -49,6 +50,7 @@ void Card::SetSuit(CardSuit suitType) {
 
 }
 
+
 //Getters
 
 bool Card::GetSide() {
@@ -66,37 +68,48 @@ CardSuit Card::GetSuit() {
 // Print
 
 void Card::Print() {
-   
-    suit = "Joker";
-    if (cardSuit == SPADE) {
-        suit = "SPADES";
-    }
-    else if (cardSuit == CLUB) {
-        suit = "CLUBS";
-    }
-    else if (cardSuit == HEART) {
-        suit = "HEARTS";
-    }
-    else {
-        suit = "DIAMONDS";
-    }
+    if (cardFace) {
+        suit = "Joker";
+        if (cardSuit == SPADE) {
+            //suit = "SPADES";
+            suit = "S";
+        }
+        else if (cardSuit == CLUB) {
+            //suit = "CLUBS";
+            suit = "C";
+        }
+        else if (cardSuit == HEART) {
+            //suit = "HEARTS";
+            suit = "H";
+        }
+        else {
+            //suit = "DIAMONDS";
+            suit = "D";
+        }
 
-    if (cardNumber == 1) {
-        cout << "Ace of " << suit << endl;
-    }
-    else if (cardNumber == 11) {
-        cout << "Jack of " << suit << endl;
-    }
-    else if (cardNumber == 12) {
-        cout << "Queen of " << suit << endl;
-    }
-    else if (cardNumber == 13) {
-        cout << "King of " << suit << endl;
+        if (cardNumber == 1) {
+            //cout << "Ace of " << suit << endl;
+            cout << "A." << suit << " ";
+        }
+        else if (cardNumber == 11) {
+            //cout << "Jack of " << suit << endl;
+            cout << "J." << suit << " ";
+        }
+        else if (cardNumber == 12) {
+           // cout << "Queen of " << suit << endl;
+            cout << "Q." << suit << " ";
+        }
+        else if (cardNumber == 13) {
+           // cout << "King of " << suit << endl;
+            cout << "K." << suit << " ";
+        }
+        else {
+            cout << cardNumber << "." << suit << " ";
+        }
     }
     else {
-        cout << cardNumber << " of " << suit << endl;
+        cout << "X ";
     }
-    
     //}
     //else {
     //  cout << "Card is facing down. We don't know what it is yet." << endl;

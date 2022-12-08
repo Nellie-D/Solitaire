@@ -130,8 +130,10 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="CardSuit.h" />
     <ClInclude Include="Deck.h" />
+    <ClInclude Include="Board.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Board.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="main.cpp" />
