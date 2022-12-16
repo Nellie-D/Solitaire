@@ -20,7 +20,7 @@ public:
     void flip(Card*);
     void sort();
     void print();
-
+  
 
 private:
     bool cardFront;
@@ -32,6 +32,7 @@ private:
     vector <Card*> localDeckVector;
     vector<int> indexVector;
     vector <Card*> newDeckVector;
+ 
 };
 
 #endif

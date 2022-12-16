@@ -6,35 +6,22 @@ using namespace std;
 
 
 Board::Board() {
+
 	this->created = true;
+
+	boardDeck.createDeck();
+
+	boardDeck.shuffle();
 	
 	
 }
 
 void Board::layoutGameAlg() {
-	boardDeck.createDeck();
-	boardDeck.shuffle();
-	cout << "Hello" << endl;
-	int iterA = 0;
-	int iterB = 0;
+	
+
 	int f = 51;
-	/*while (iterA * iterB < 37) {
-		
-		layoutArray[iterA][iterB] = boardDeck.getCurrCard(f);
 
-		if (iterB > 6) {
-			//cout << "iterAup" << endl;
-			iterB = 0;
-			iterA++;
-		}
-		else {
-			iterB++;
-			f--;
-		}
-		
 
-	}	 */
-	Card* currCard;
 	for (int i = 0; i < 7; i++) {
 		cout << "\n";
 		
@@ -43,27 +30,72 @@ void Board::layoutGameAlg() {
 			currCard = boardDeck.getCurrCard(f);
 			
 			if (i > j) {
-				cout << "  ";
+				
+				layoutArray[i][j] = new Card;
+				//cout << "  ";
 				
 			}
 			else if (i == j) {
 				
 				layoutArray[i][j] = currCard;
-				layoutArray[i][j]->Print();
+				f--;
+				
+				//layoutArray[i][j]->Print();
 			}
+
 			else if (j > i) {
 				
-				
+				layoutArray[i][j] = currCard;
 				boardDeck.flip(currCard);
-				currCard->Print();
+				f--;
+				//currCard->Print();
 			}
-			f--;
-		}
-
+			
+		}	
 		
 	}
 	
+	/*for (int c = 0; c < 24; c++) {
+		currCard = boardDeck.getCurrCard(f);
+		handArray[c] = currCard;
+		f--;
+	}
+	 */
+
+	printBoard();
+	
+}
+
+
+void Board::flipOnBoard(int i, int j) {
+
+	boardDeck.flip(layoutArray[i][j]);
+
 	
 	
 }
 
+void Board::printBoard() {
+
+	int f = 51;
+	for (int i = 0; i < 7; i++) {
+		cout << "\n";
+
+		for (int j = 0; j < 7; j++) {
+
+			currCard = boardDeck.getCurrCard(f);
+
+			if (i > j) {
+				cout << "  ";
+			}
+			else if (i == j) {
+				layoutArray[i][j]->Print();
+			}
+			else if (j > i) {
+				layoutArray[i][j]->Print();
+			}
+			f--;
+		}
+	}
+
+}
