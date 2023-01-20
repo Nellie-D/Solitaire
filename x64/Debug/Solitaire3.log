@@ -1,2 +1,4 @@
 ﻿  main.cpp
+C:\Users\danie\Solitaire3\Solitaire3\Solitaire3\main.cpp(18,9): warning C4101: 'j': unreferenced local variable
+C:\Users\danie\Solitaire3\Solitaire3\Solitaire3\main.cpp(17,9): warning C4101: 'i': unreferenced local variable
   Solitaire3.vcxproj -> C:\Users\danie\Solitaire3\Solitaire3\x64\Debug\Solitaire3.exe

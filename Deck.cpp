@@ -25,6 +25,9 @@ Deck::~Deck() {
     cout << "Done" << endl;
 }
 
+//function currently not in use. However since the project is still in progress, 
+//I will save this for a later time
+
 /*Card* Deck::createDeck(int i) {
 
 
@@ -52,11 +55,15 @@ Deck::~Deck() {
     return DeckList[i];
 }*/
 
+//create a Deck out of card objects
+
 void Deck::createDeck() {
 
 
     int f = 0;
     while (f < 52) {
+        //add each new card into the Deck Vector
+
         for (int i = 1; i < 14; i++) {
             DeckVector.push_back(new Card(true, i, SPADE));
             f++;
@@ -88,6 +95,8 @@ Card* Deck::getCurrCard(int i) {
     return DeckVector[i];
 }
 
+//shuffle the deck
+
 void Deck::shuffle() {
     
     localDeckVector.resize(52);
@@ -97,12 +106,20 @@ void Deck::shuffle() {
     }
     for (int i = 51; i > -1; i--) {
 
+        //generate a random number 0-51 from a seed
+        
+
         srand((unsigned)time(NULL));
         int localIndex = rand() % indexVector.size();
         int value = indexVector[localIndex];
 
+        //place the card at the specified, random index of the local vector
+        //a local deckVector is used to avoid duplicating the card in the global deckVector
+
         localDeckVector[value] = DeckVector[i];
 
+        //erase the Deck in order to clear out the sorted deck
+        //this will ensure that when we put the localDeck (sorted) into DeckVector (unsorted), it won't overflow
         DeckVector.erase(DeckVector.begin() + i);
         indexVector.erase(indexVector.begin() + localIndex);
         
@@ -110,7 +127,10 @@ void Deck::shuffle() {
 
     for (int j = 51; j > -1; j--) {
         if (localDeckVector[j] == NULL) {
-          
+
+            //don't waste space (and thus time) by leaving localDeckVector
+            // also clear it for future shuffles
+
             localDeckVector.erase(localDeckVector.begin() + j);
         }
         
@@ -136,6 +156,12 @@ void Deck::flip(Card* specCard) {
     cout << "Card Number: ";
     cin >> cardNumber;
     */
+
+    // ^^^ this is for user clarification, but too much to print while
+    // creating code
+
+    //change the Side of the card, so that upon printing, it will be flipped
+
     Card* specifiedCard = specCard;
     if (specifiedCard->GetSide()) {
         specifiedCard->SetSide(false);
@@ -161,6 +187,8 @@ void Deck::flip(Card* specCard) {
 }
 
 void Deck::flipAll() {
+    //Flip the entire deck
+
     for (int f = 0; f < DeckVector.size(); f++) {
         bool cardFace = DeckVector[f]->GetSide();
         
@@ -175,6 +203,18 @@ void Deck::flipAll() {
 }
 
 void Deck::sort() {
+
+    //Sort the deck
+    /*this function is a rudimentary algorithm that creates smaller vectors to hold
+    cards of different suits. I am exploring options to create a simpler algorithm with
+    my current Card specifications, as each card in the deck holds a number 1-13. Alone, these
+    values are repeated four times, which could create sorting confusion if trying to compare values
+    to the card with a higher and lower index than itself. 
+    
+    I may explore giving the Deck class a new attribute, in which each card is given a number 1-52 when
+    a new Deck of cards is created. This would ensure that each card has a unique value and could simplify
+    the sorting process.*/
+
     vector<Card*> localSpade;
     localSpade.resize(13);
     vector<Card*> localClub;
@@ -207,7 +247,8 @@ void Deck::sort() {
         }
        
     }
-    
+    /*combine the smaller, sorted vectors into the newDeckVector, then swap the
+    newDeckVector with the previously unsorted, global DeckVector.*/
     
     for (int a = 0; a < 13; a++) {
         newDeckVector.push_back(localSpade[a]);
@@ -224,7 +265,7 @@ void Deck::sort() {
     DeckVector.swap(newDeckVector);
     cout << DeckVector.size();
 
-    
+    //explore erasing newDeckVector so as to save space
 
 
 }

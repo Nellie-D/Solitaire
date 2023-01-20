@@ -15,6 +15,7 @@ public:
 	void setMap();
 	void getMap();
 	void printBoard();
+	void sortBoard();
 
 private:
 	Card* layoutArray[7][7];

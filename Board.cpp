@@ -7,6 +7,7 @@ using namespace std;
 
 Board::Board() {
 
+	//default board
 	this->created = true;
 
 	boardDeck.createDeck();
@@ -16,6 +17,8 @@ Board::Board() {
 	
 }
 
+
+//create the basic layout by putting card objects into a 2d array
 void Board::layoutGameAlg() {
 	
 
@@ -32,7 +35,7 @@ void Board::layoutGameAlg() {
 			if (i > j) {
 				
 				layoutArray[i][j] = new Card;
-				//cout << "  ";
+				
 				
 			}
 			else if (i == j) {
@@ -54,19 +57,14 @@ void Board::layoutGameAlg() {
 		}	
 		
 	}
-	
-	/*for (int c = 0; c < 24; c++) {
-		currCard = boardDeck.getCurrCard(f);
-		handArray[c] = currCard;
-		f--;
-	}
-	 */
+
 
 	printBoard();
 	
 }
 
 
+//flip a specified card on the "board"
 void Board::flipOnBoard(int i, int j) {
 
 	boardDeck.flip(layoutArray[i][j]);
@@ -75,6 +73,15 @@ void Board::flipOnBoard(int i, int j) {
 	
 }
 
+void Board::sortBoard() {
+
+	boardDeck.sort();
+
+
+
+}
+
+//print the entire board in a layout that resembles the Solitaire game
 void Board::printBoard() {
 
 	int f = 51;
